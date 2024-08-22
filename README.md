@@ -37,7 +37,7 @@ You have the freedom to structure your `src/` and `tests/` directories according
 
 ```bash
 pip install cookiecutter
-cookiecutter gh:irod973/cookiecutter-template-test
+cookiecutter gh:irod973/python-project-template
 ```
 
 You'll be prompted for the following variables:
@@ -59,7 +59,7 @@ git init
 # Should also create remote repo, e.g. via Github web console
 # Then make first push e.g.
 # git commit -m "Initial commit"
-# git remote add origin https://github.com/irod973/cookiecutter-template-test.git
+# git remote add origin https://github.com/irod973/{{myproject}}.git
 # git push -u origin main 
 ```
 
