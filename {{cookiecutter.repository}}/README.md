@@ -16,22 +16,40 @@
 
 Initialize your project with the provided invoke command.
 ```bash
-invoke installs # Install dependencies and pre-commit hooks
+# Install dependencies and pre-commit hooks
+invoke installs
 ```
 
 # Usage
 
 (The source comes with an example python package and an example FastAPI app. Delete this comment and add details for your application.)
 
+Test the example package
 ```bash
-# Test the example package
 poetry run {{cookiecutter.repository}}
 ```
 
+Test the example API with Docker:
 ```bash
-# Test the example API
 poetry add fastapi uvicorn
-poetry run uvicorn main:app --reload
+
+# Invoke docker compose
+invoke containers
+
+# Or run with docker compose
+docker compose up --build
+
+# Or run with docker
+# Note: specify platform if running on Apple M chip 
+docker build --platform linux/amd64 -t angle-to-geo-image -f Dockerfile .
+docker run -it --platform linux/amd64 --name angle-to-geo-test-ctr -p 8000:8000 angle-to-geo-image
+```
+
+```bash
+poetry add fastapi uvicorn
+# Test the API using the local environment
+cd src
+poetry run uvicorn example_app.main:app --reload
 ```
 
 ## Development Features
@@ -54,5 +72,9 @@ Use the provided Invoke tasks to manage your development workflow:
 - `invoke packages`: Build your Python package.
 - `invoke containers`: Build and run your Docker image.
 
+### Using Ruff with PyCharm
 
+Note: First version of [Ruff plugin](https://github.com/koxudaxi/ruff-pycharm-plugin) would have issues (v0.0.27) apparently due to my PyCharm version (2023.2).
+
+I upgraded to (2024.2) and Ruff 0.0.39 and now autosave works.
 

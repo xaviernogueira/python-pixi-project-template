@@ -1,5 +1,5 @@
 {
-    "user": "pano",
+    "user": "irod973",
     "name": "Python Project",
     "repository": "{{cookiecutter.name.lower().replace(' ', '-')}}",
     "package": "{{cookiecutter.repository.replace('-', '_')}}",

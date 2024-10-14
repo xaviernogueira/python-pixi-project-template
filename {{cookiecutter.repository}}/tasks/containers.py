@@ -17,7 +17,7 @@ IMAGE_TAG = "latest"
 @task
 def compose(ctx: Context) -> None:
     """Start up docker compose."""
-    ctx.run("docker compose up")
+    ctx.run("docker compose up --build")
 
 
 @task(pre=[packages.build])

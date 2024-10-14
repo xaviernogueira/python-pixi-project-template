@@ -62,9 +62,10 @@ omit = ["__main__.py"]
 [tool.mypy]
 pretty = true
 strict = true
-python_version = "{{cookiecutter.python_version}}"
+python_version = "3.12"
 check_untyped_defs = true
 ignore_missing_imports = true
+disable_error_code = "import-untyped"
 
 [tool.pytest.ini_options]
 addopts = "--verbosity=2"
@@ -74,7 +75,11 @@ pythonpath = ["src"]
 fix = true
 indent-width = 4
 line-length = 100
-target-version = "py{{cookiecutter.python_version.replace('.', '')}}"
+target-version = "py312"
+src = ["src"]
+
+[tool.ruff.lint]
+extend-select = ["I"]
 
 [tool.ruff.format]
 docstring-code-format = true
