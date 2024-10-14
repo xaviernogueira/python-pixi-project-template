@@ -22,6 +22,7 @@ packages = [{ include = "{{cookiecutter.package}}", from = "src" }]
 
 [tool.poetry.dependencies]
 python = "^{{cookiecutter.python_version}}"
+loguru = "^0.7.2"
 
 [tool.poetry.group.checks.dependencies]
 bandit = "^1.7.9"
