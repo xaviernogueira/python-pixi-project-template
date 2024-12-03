@@ -1,6 +1,6 @@
-# Irving's Python Project Cookiecutter Template
+# Xaviers's Pixi Python Project Cookiecutter Template
 
-A python project template to simplify project setup. Adapted from https://github.com/fmind/cookiecutter-mlops-package
+A python project template to simplify project setup. Adapted originally by @irod973 from https://github.com/fmind/cookiecutter-mlops-package, and now by myself to switch from `poetry` to `pixi`.
 
 This template copy omits the MLFlow functionality. Use the linked mlops-package template if this is desired 
 
@@ -18,12 +18,14 @@ This template equips you with the essentials for creating, testing, and packagin
 
 You have the freedom to structure your `src/` and `tests/` directories according to your preferences. Alternatively, you can draw inspiration from the structure used in the [MLOps Python Package](https://github.com/fmind/mlops-python-package) project for a ready-made implementation.
 
+We use `pixi` due to it's ability to deterministically manage non-python dependencies (i.e., GDAL or FFMPEG).
+
 ## Key Features
 
 (This section was copied into the created project's README so tool info is available to users.)
 
 * **Streamlined Project Structure:** A well-defined directory layout for source code, tests, documentation, tasks, and Docker configurations.
-* **Poetry Integration:** Effortless dependency management and packaging with [Poetry](https://python-poetry.org/).
+* **Pixi Integration:** Effortless dependency management and packaging with [Pixi](https://pixi.sh/latest/), even with non-python dependencies.
 * **Automated Testing and Checks:** Pre-configured workflows using [Pytest](https://docs.pytest.org/), [Ruff](https://docs.astral.sh/ruff/), [Mypy](https://mypy.readthedocs.io/), [Bandit](https://bandit.readthedocs.io/), and [Coverage](https://coverage.readthedocs.io/) to ensure code quality, style, security, and type safety.
 * **Pre-commit Hooks:** Automatic code formatting and linting with [Ruff](https://docs.astral.sh/ruff/) and other pre-commit hooks to maintain consistency.
 * **Dockerized Deployment:** Dockerfile and docker-compose.yml for building and running the package within a containerized environment ([Docker](https://www.docker.com/)).
@@ -37,7 +39,7 @@ You have the freedom to structure your `src/` and `tests/` directories according
 
 ```bash
 pip install cookiecutter
-cookiecutter gh:irod973/python-project-template
+cookiecutter gh:xaviernogueira/python-pixi-project-template
 ```
 
 You'll be prompted for the following variables:

@@ -1,6 +1,6 @@
 {
-    "user": "irod973",
-    "name": "Python Project",
+    "user": "xaviernogueira",
+    "name": "Python Pixi Project",
     "repository": "{{cookiecutter.name.lower().replace(' ', '-')}}",
     "package": "{{cookiecutter.repository.replace('-', '_')}}",
     "license": "NA",
