@@ -10,16 +10,16 @@ from invoke.context import Context
 @task
 def install(ctx: Context) -> None:
     """Install the project."""
-    ctx.run("poetry install")
+    ctx.run("pixi install")
 
 
 @task
 def hooks(ctx: Context) -> None:
     """Setup the project hooks."""
-    ctx.run("poetry run pre-commit install")
+    ctx.run("pixi run pre-commit install")
 
 
 @task
 def test(ctx: Context) -> None:
     """Run the project unit tests."""
-    ctx.run("poetry run pytest tests/")
+    ctx.run("pixi run pytest tests/")

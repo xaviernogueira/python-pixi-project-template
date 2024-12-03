@@ -11,15 +11,16 @@ from invoke.tasks import task
 @task
 def imports(ctx: Context) -> None:
     """Format python imports with ruff."""
-    ctx.run("poetry run ruff check --select I --fix")
+    ctx.run("pixi run ruff check --select I --fix")
 
 
 @task
 def sources(ctx: Context) -> None:
     """Format python sources with ruff."""
-    ctx.run("poetry run ruff format src/ tasks/ tests/")
+    ctx.run("pixi run ruff format src/ tasks/ tests/")
 
 
 @task(pre=[imports, sources], default=True)
 def all(_: Context) -> None:
     """Run all format tasks."""
+    ...
