@@ -80,7 +80,6 @@ git init
 
 4. **Start developing!**
 
-#TODO: update this for pixi!
 
 Use the provided pixi "tasks" to manage your development workflow:
 
