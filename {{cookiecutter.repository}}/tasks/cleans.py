@@ -8,13 +8,16 @@ from invoke.tasks import task
 
 # %% - Tools
 
+
 def get_pyproject_dict() -> dict:
     """Get the pyproject dictionary."""
 
     with open("pyproject.toml", "r") as file:
         return toml.load(file)
 
+
 # %% TASKS
+
 
 @task
 def mypy(ctx: Context) -> None:
