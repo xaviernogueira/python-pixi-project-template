@@ -1,6 +1,7 @@
 """Clean tasks for pyinvoke."""
 
 # %% IMPORTS
+from typing import Any
 import toml
 from invoke.context import Context
 from invoke.tasks import task
@@ -9,11 +10,13 @@ from invoke.tasks import task
 # %% - Tools
 
 
-def get_pyproject_dict() -> dict:
+def get_pyproject_dict() -> dict[str, Any]:
     """Get the pyproject dictionary."""
 
     with open("pyproject.toml", "r") as file:
-        return toml.load(file)
+        out_dict = toml.load(file)
+        assert isinstance(out_dict, dict)
+        return out_dict
 
 
 # %% TASKS

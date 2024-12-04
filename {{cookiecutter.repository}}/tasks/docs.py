@@ -4,6 +4,7 @@
 
 from invoke.context import Context
 from invoke.tasks import task
+from pathlib import Path
 
 from . import cleans
 
@@ -11,7 +12,7 @@ from . import cleans
 
 DOC_FORMAT = "google"
 OUTPUT_DIR = "docs/"
-PACKAGE_NAME = cleans.get_pyproject_dict()["project"]["name"]
+PACKAGE_NAME = cleans.get_pyproject_dict()["project"]["name"].replace("-", "_")
 
 # %% TASKS
 
@@ -19,14 +20,14 @@ PACKAGE_NAME = cleans.get_pyproject_dict()["project"]["name"]
 @task
 def serve(ctx: Context, format: str = DOC_FORMAT, port: int = 8088) -> None:
     """Serve the API docs with pdoc."""
-    ctx.run(f"pixi run pdoc --docformat={format} --port={port} src/{PACKAGE_NAME}")
+    ctx.run(f"pixi run pdoc --docformat={format} --port={port} {Path.cwd()}/src/{PACKAGE_NAME}")
 
 
 @task
 def api(ctx: Context, format: str = DOC_FORMAT, output_dir: str = OUTPUT_DIR) -> None:
     """Generate the API docs with pdoc."""
     ctx.run(
-        f"pixi run pdoc --docformat={format} --output-directory={output_dir} src/{PACKAGE_NAME}"
+        f"pixi run pdoc --docformat={format} --output-directory={output_dir} {Path.cwd()}/src/{PACKAGE_NAME}"
     )
 
 

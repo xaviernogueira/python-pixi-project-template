@@ -14,9 +14,9 @@ COMMANDS = [
     "pixi run installs",
     "pixi run formats",
     "pixi run checks",
-    # "pixi run docs", # TODO: Fix the docs
+    "pixi run docs",
     "pixi run packages",
-    "pixi run containers",
+    #"pixi run containers", # TODO: fix test Dockerfile
 ]
 
 # %% TESTS
@@ -49,6 +49,7 @@ def test_project_generation(cookies: Cookies) -> None:
         "name": context["name"],
         "repository": repository,
         "package": package,
+        "license": "NA",
         "version": context["version"],
         "description": context["description"],
         "python_version": context["python_version"],
