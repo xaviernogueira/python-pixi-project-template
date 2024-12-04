@@ -84,6 +84,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstd-1.5.6-ha6fb4c9_0.conda
       - pypi: https://files.pythonhosted.org/packages/6a/21/5b6702a7f963e95456c0de2d495f67bf5fd62840ac655dc451586d23d39a/attrs-24.2.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/12/b3/231ffd4ab1fc9d679809f356cebee130ac7daa00d6d6f3206dd4fd137e9e/distro-1.9.0-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/0a/66/7f8c48009c72d73bc6bbe6eb87ac838d6a526146f7dab14af671121eb379/invoke-2.2.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/58/4d/8245e6f76a93c98aab285a43ea71ff1b171bcd90c9d238bf81f7021fb233/psutil-6.1.0-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/63/a7/34844a563c425962658f093b359636deefd19eab6783896e0d378dae88a1/pytest_helpers_namespace-2021.12.29-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/df/3d/09b2335b10f6a292a8c99907634655acbe0054850934574c904cab172a86/pytest_shell_utilities-1.9.7-py3-none-any.whl
@@ -157,6 +158,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-64/zstd-1.5.6-h915ae27_0.conda
       - pypi: https://files.pythonhosted.org/packages/6a/21/5b6702a7f963e95456c0de2d495f67bf5fd62840ac655dc451586d23d39a/attrs-24.2.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/12/b3/231ffd4ab1fc9d679809f356cebee130ac7daa00d6d6f3206dd4fd137e9e/distro-1.9.0-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/0a/66/7f8c48009c72d73bc6bbe6eb87ac838d6a526146f7dab14af671121eb379/invoke-2.2.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/01/9e/8be43078a171381953cfee33c07c0d628594b5dbfc5157847b85022c2c1b/psutil-6.1.0-cp36-abi3-macosx_10_9_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/63/a7/34844a563c425962658f093b359636deefd19eab6783896e0d378dae88a1/pytest_helpers_namespace-2021.12.29-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/df/3d/09b2335b10f6a292a8c99907634655acbe0054850934574c904cab172a86/pytest_shell_utilities-1.9.7-py3-none-any.whl
@@ -230,6 +232,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstd-1.5.6-hb46c0d2_0.conda
       - pypi: https://files.pythonhosted.org/packages/6a/21/5b6702a7f963e95456c0de2d495f67bf5fd62840ac655dc451586d23d39a/attrs-24.2.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/12/b3/231ffd4ab1fc9d679809f356cebee130ac7daa00d6d6f3206dd4fd137e9e/distro-1.9.0-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/0a/66/7f8c48009c72d73bc6bbe6eb87ac838d6a526146f7dab14af671121eb379/invoke-2.2.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/1d/cb/313e80644ea407f04f6602a9e23096540d9dc1878755f3952ea8d3d104be/psutil-6.1.0-cp36-abi3-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/63/a7/34844a563c425962658f093b359636deefd19eab6783896e0d378dae88a1/pytest_helpers_namespace-2021.12.29-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/df/3d/09b2335b10f6a292a8c99907634655acbe0054850934574c904cab172a86/pytest_shell_utilities-1.9.7-py3-none-any.whl
@@ -897,6 +900,12 @@ packages:
   - pkg:pypi/iniconfig?source=conda-forge-mapping
   size: 11474
   timestamp: 1733223232820
+- kind: pypi
+  name: invoke
+  version: 2.2.0
+  url: https://files.pythonhosted.org/packages/0a/66/7f8c48009c72d73bc6bbe6eb87ac838d6a526146f7dab14af671121eb379/invoke-2.2.0-py3-none-any.whl
+  sha256: 6ea924cc53d4f78e3d98bc436b08069a03077e6f85ad1ddaa8a116d7dad15820
+  requires_python: '>=3.6'
 - kind: conda
   name: jinja2
   version: 3.1.4
@@ -1596,8 +1605,8 @@ packages:
 - kind: pypi
   name: psutil
   version: 6.1.0
-  url: https://files.pythonhosted.org/packages/1d/cb/313e80644ea407f04f6602a9e23096540d9dc1878755f3952ea8d3d104be/psutil-6.1.0-cp36-abi3-macosx_11_0_arm64.whl
-  sha256: 0895b8414afafc526712c498bd9de2b063deaac4021a3b3c34566283464aff8e
+  url: https://files.pythonhosted.org/packages/01/9e/8be43078a171381953cfee33c07c0d628594b5dbfc5157847b85022c2c1b/psutil-6.1.0-cp36-abi3-macosx_10_9_x86_64.whl
+  sha256: 6e2dcd475ce8b80522e51d923d10c7871e45f20918e027ab682f94f1c6351688
   requires_dist:
   - black ; extra == 'dev'
   - check-manifest ; extra == 'dev'
@@ -1623,8 +1632,8 @@ packages:
 - kind: pypi
   name: psutil
   version: 6.1.0
-  url: https://files.pythonhosted.org/packages/01/9e/8be43078a171381953cfee33c07c0d628594b5dbfc5157847b85022c2c1b/psutil-6.1.0-cp36-abi3-macosx_10_9_x86_64.whl
-  sha256: 6e2dcd475ce8b80522e51d923d10c7871e45f20918e027ab682f94f1c6351688
+  url: https://files.pythonhosted.org/packages/1d/cb/313e80644ea407f04f6602a9e23096540d9dc1878755f3952ea8d3d104be/psutil-6.1.0-cp36-abi3-macosx_11_0_arm64.whl
+  sha256: 0895b8414afafc526712c498bd9de2b063deaac4021a3b3c34566283464aff8e
   requires_dist:
   - black ; extra == 'dev'
   - check-manifest ; extra == 'dev'

@@ -1,5 +1,6 @@
 {
     "user": "xaviernogueira",
+    "email": "",
     "name": "Python Pixi Project",
     "repository": "{{cookiecutter.name.lower().replace(' ', '-')}}",
     "package": "{{cookiecutter.repository.replace('-', '_')}}",
@@ -9,6 +10,7 @@
     "python_version": "3.12",
     "__prompts__": {
         "user": "GitHub User",
+        "email": "Email",
         "name": "Project Name",
         "repository": "GitHub Repository",
         "package": "Python Package",
