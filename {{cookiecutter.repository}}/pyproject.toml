@@ -74,7 +74,7 @@ target-version = "py312"
 src = ["src"]
 
 [tool.ruff.lint]
-ignore = ["D100", "D103"]
+ignore = ["D100", "D103", "I001"]
 extend-select = ["I"]
 
 [tool.ruff.format]
