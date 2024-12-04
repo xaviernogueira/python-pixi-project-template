@@ -4,9 +4,9 @@
     "name": "Python Pixi Project",
     "repository": "{{cookiecutter.name.lower().replace(' ', '-')}}",
     "package": "{{cookiecutter.repository.replace('-', '_')}}",
-    "license": "NA",
     "version": "0.1.0",
     "description": "TODO",
+    "license": "NA",
     "python_version": "3.12",
     "__prompts__": {
         "user": "GitHub User",
@@ -14,7 +14,6 @@
         "name": "Project Name",
         "repository": "GitHub Repository",
         "package": "Python Package",
-        "license": "Project License",
         "version": "Project Version",
         "description": "Project Description",
         "python_version": "Python Version"

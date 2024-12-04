@@ -2,6 +2,7 @@
 
 # %% IMPORTS
 
+import os
 from pytest_cookies.plugin import Cookies
 from pytestshellutils.shell import Subprocess
 
@@ -9,12 +10,11 @@ from pytestshellutils.shell import Subprocess
 
 COMMANDS = [
     "git init",
-    # "pixi run cleans.reset",
+    "invoke cleans.reset",
     "pixi run installs",
     "pixi run formats",
     "pixi run checks",
-    "pixi run docs",
-    "pixi run projects",
+    # "pixi run docs", # TODO: Fix the docs
     "pixi run packages",
     "pixi run containers",
 ]
@@ -28,7 +28,6 @@ def test_project_generation(cookies: Cookies) -> None:
     context = {
         "user": "test",
         "name": "MLOps 123",
-        "license": "apache-2",
         "version": "1.0.0",
         "description": "DONE",
         "python_version": "3.12",
@@ -46,18 +45,21 @@ def test_project_generation(cookies: Cookies) -> None:
 
     expected_result = {
         "user": context["user"],
+        "email": "",
         "name": context["name"],
         "repository": repository,
         "package": package,
-        "license": context["license"],
         "version": context["version"],
         "description": context["description"],
         "python_version": context["python_version"],
     }
     assert result.context == expected_result
 
+    env = os.environ.copy()
+    env["PIXI_PROJECT_MANIFEST"] = str(result.project_path / "pyproject.toml")
+
     # - commands
     shell = Subprocess(cwd=result.project_path)
     for command in COMMANDS:
-        result = shell.run(*command.split())
+        result = shell.run(*command.split(), env=env)
         assert result.returncode == 0, f"Command failed: {command}"

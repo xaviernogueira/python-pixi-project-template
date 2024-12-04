@@ -7,7 +7,6 @@ repository = "https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository
 documentation = "https://{{cookiecutter.user}}.github.io/{{cookiecutter.repository}}/"
 authors = [{name = "{{cookiecutter.user}}", email = "{{cookiecutter.email}}"}]
 readme = "README.md"
-license = "{{cookiecutter.license}}"
 packages = [{ include = "{{cookiecutter.package}}", from = "src" }]
 
 # PyPI dependencies

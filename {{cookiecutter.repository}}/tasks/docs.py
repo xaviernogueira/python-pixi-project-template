@@ -11,6 +11,7 @@ from . import cleans
 
 DOC_FORMAT = "google"
 OUTPUT_DIR = "docs/"
+PACKAGE_NAME = cleans.get_pyproject_dict()["project"]["name"]
 
 # %% TASKS
 
@@ -18,14 +19,14 @@ OUTPUT_DIR = "docs/"
 @task
 def serve(ctx: Context, format: str = DOC_FORMAT, port: int = 8088) -> None:
     """Serve the API docs with pdoc."""
-    ctx.run(f"pixi run pdoc --docformat={format} --port={port} src/{ctx.project.package}")
+    ctx.run(f"pixi run pdoc --docformat={format} --port={port} src/{PACKAGE_NAME}")
 
 
 @task
 def api(ctx: Context, format: str = DOC_FORMAT, output_dir: str = OUTPUT_DIR) -> None:
     """Generate the API docs with pdoc."""
     ctx.run(
-        f"pixi run pdoc --docformat={format} --output-directory={output_dir} src/{ctx.project.package}"
+        f"pixi run pdoc --docformat={format} --output-directory={output_dir} src/{PACKAGE_NAME}"
     )
 
 
