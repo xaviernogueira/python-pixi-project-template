@@ -1,0 +1,30 @@
+[tasks]
+
+# check the formats w/ Ruff
+_format = {
+    cmd = ["pixi", "run", "ruff", "format", "--check", "src/", "tasks/", "tests/"]
+}
+
+# Check the types w/ MyPy
+_static_type = {
+    cmd = ["pixi", "run", "mypy", "src/", "tasks/", "tests/"],
+}
+
+# Check the codes w/ Ruff
+_code = {"pixi", "run", "ruff", "check", "src/", "tasks/", "tests/"}
+
+# Check the tests w/ pytest
+_test = {"pixi", "run", "pytest", "numprocesses='auto'", "tests/"}
+
+_security = {
+    cmd = ["pixi", "run", "bandit", "--recursive", "--configfile=pyproject.toml", "src/"]
+}
+
+_coverage = {
+    cmd = ["pixi", "run", "pytest", "--numprocesses='auto'", "--cov=src/", "--cov-fail-under=80", "tests/"]
+}
+
+# below are the main commands that bundle above tasks
+checks = {
+    depends-on = ["_format", "_static_type", "_code", "_test", "_security", "_coverage"]
+}
