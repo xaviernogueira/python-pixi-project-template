@@ -5,10 +5,15 @@ version = "{{cookiecutter.version}}"
 description = "{{cookiecutter.description}}"
 repository = "https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}"
 documentation = "https://{{cookiecutter.user}}.github.io/{{cookiecutter.repository}}/"
-authors = ["{{cookiecutter.user}}"]
+authors = [{name = "{{cookiecutter.user}}", email = "{{cookiecutter.email}}"}]
 readme = "README.md"
 license = "{{cookiecutter.license}}"
 packages = [{ include = "{{cookiecutter.package}}", from = "src" }]
+
+# PyPI dependencies
+dependencies = [
+    "invoke",
+]
 
 [tool.pixi.project]
 channels = ["conda-forge"]
@@ -16,7 +21,7 @@ platforms = ["linux-64", "osx-arm64", "osx-64"]
 
 [tool.pixi.dependencies]
 python = "{{cookiecutter.python_version}}"
-invoker = "2.2.0"
+hatch = "*"
 loguru = "0.7.2"
 bandit = "1.7.9"
 coverage = "7.5.4"
@@ -26,18 +31,17 @@ pytest-cov = "5.0.0"
 pytest-xdist = "3.6.1"
 ruff = "0.5.0"
 pre-commit = "3.7.1"
-pdoc = "14.5.1"
+pdoc = ">=14.0.0"
 
 [tool.pixi.tasks]
 "{{cookiecutter.repository}}" = { cmd = "python -m {{cookiecutter.package}}.scripts" }
-checks = { cmd = "invoke checks" }
-cleans = { cmd = "invoke cleans" }
-commits = { cmd = "invoke commits" }
-containers = { cmd = "invoke containers" }
-docs = { cmd = "invoke docs" }
-formats = { cmd = "invoke formats" }
 installs = { cmd = "invoke installs" }
-packages = { cmd = "invoke packages" }
+checks = { cmd = "invoke checks", depends-on = ["installs"] }
+cleans = { cmd = "invoke cleans", depends-on = ["installs"] }
+containers = { cmd = "invoke containers", depends-on = ["installs"] }
+docs = { cmd = "invoke docs", depends-on = ["installs"] }
+formats = { cmd = "invoke formats", depends-on = ["installs"] }
+packages = { cmd = "invoke packages", depends-on = ["installs"] }
 
 
 # CONFIGURATIONS
@@ -56,7 +60,7 @@ strict = true
 python_version = "3.12"
 check_untyped_defs = true
 ignore_missing_imports = true
-disable_error_code = "import-untyped"
+disable_error_code = ["import-untyped", "misc"]
 
 [tool.pytest.ini_options]
 addopts = "--verbosity=2"

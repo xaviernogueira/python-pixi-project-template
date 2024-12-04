@@ -4,6 +4,7 @@
 
 from invoke.context import Context
 from invoke.tasks import task
+from pathlib import Path
 
 # %% TASKS
 
@@ -11,7 +12,8 @@ from invoke.tasks import task
 @task
 def pixi(ctx: Context) -> None:
     """Install poetry packages."""
-    ctx.run("pixi install")
+    manifest: str = str(Path.cwd() / "pyproject.toml")
+    ctx.run(f"pixi install --manifest-path={manifest}")
 
 
 @task
