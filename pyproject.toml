@@ -2,27 +2,27 @@
 [project]
 name = "cookiecutter-pixi-bootstrap-env"
 requires-python = ">=3.12"
-authors = ["Xavier Nogueira <github@xaviernogueira>"]
+authors = [{ name = "Xavier Nogueira", email = "xavier.rojas.nogueira@gmail.com"}]
 dependencies = [
-   "commitizen = ^3.28.0",
-   "invoke = ^2.2.0",
-   "pre-commit = ^3.7.1",
-   "pytest = ^8.3.2",
-   "pytest-cookies = ^0.7.0",
-   "pytest-shell-utilities = ^1.9.0",
+   "commitizen ~= 3.28.0",
+   "invoke ~= 2.2.0",
+   "pre-commit ~= 3.7.1",
+   "pytest ~= 8.3.2",
+   "pytest-cookies ~= 0.7.0",
+   "pytest-shell-utilities ~= 1.9.0",
 ]
 readme = "README.md"
 license = "MIT"
 package-mode = false
 
 
-[tool.pixi.projects]
+[tool.pixi.project]
 channels = ["conda-forge"]
 platforms = ["linux-64", "osx-arm64", "osx-64"]
 
 [tool.pixi.tasks]
 install = { cmd = ["pixi", "install"] }
-hooks = { cmd = ["pixi", "run", "pre-commit", "install"], depends-on = ["install"] }
+hooks = { cmd = ["pixi", "run", "pre-commit", "install", "--allow-missing-config option"], depends-on = ["install"] }
 test = { cmd = ["pixi", "run", "pytest", "tests/"], depends-on = ["install"] }
 
 [tool.pytest.ini_options]
