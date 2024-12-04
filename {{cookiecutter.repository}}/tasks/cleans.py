@@ -1,13 +1,25 @@
 """Clean tasks for pyinvoke."""
 
 # %% IMPORTS
-
+from typing import Any
+import toml
 from invoke.context import Context
 from invoke.tasks import task
 
-# %% TASKS
 
 # %% - Tools
+
+
+def get_pyproject_dict() -> dict[str, Any]:
+    """Get the pyproject dictionary."""
+
+    with open("pyproject.toml", "r") as file:
+        out_dict = toml.load(file)
+        assert isinstance(out_dict, dict)
+        return out_dict
+
+
+# %% TASKS
 
 
 @task
@@ -65,9 +77,9 @@ def venv(ctx: Context) -> None:
 
 
 @task
-def poetry(ctx: Context) -> None:
-    """Clean poetry lock file."""
-    ctx.run("rm -f poetry.lock")
+def pixi(ctx: Context) -> None:
+    """Clean pixi lock file."""
+    ctx.run("rm -f pixi.lock")
 
 
 @task
@@ -83,23 +95,28 @@ def python(ctx: Context) -> None:
 @task(pre=[mypy, ruff, pytest, coverage])
 def tools(_: Context) -> None:
     """Run all tools tasks."""
+    ...
 
 
 @task(pre=[dist, docs, cache])
 def folders(_: Context) -> None:
     """Run all folders tasks."""
+    ...
 
 
-@task(pre=[venv, poetry, python])
+@task(pre=[venv, pixi, python])
 def sources(_: Context) -> None:
     """Run all sources tasks."""
+    ...
 
 
 @task(pre=[tools, folders], default=True)
 def all(_: Context) -> None:
     """Run all tools and folders tasks."""
+    ...
 
 
 @task(pre=[all, sources])
 def reset(_: Context) -> None:
     """Run all tools, folders, sources, and projects tasks."""
+    ...

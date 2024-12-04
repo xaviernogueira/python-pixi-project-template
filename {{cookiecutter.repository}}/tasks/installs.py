@@ -2,6 +2,7 @@
 
 # %% IMPORTS
 
+from pathlib import Path
 from invoke.context import Context
 from invoke.tasks import task
 
@@ -9,18 +10,20 @@ from invoke.tasks import task
 
 
 @task
-def poetry(ctx: Context) -> None:
+def pixi(ctx: Context) -> None:
     """Install poetry packages."""
-    ctx.run("poetry install")
+    manifest: str = str(Path.cwd() / "pyproject.toml")
+    ctx.run(f"pixi install --manifest-path={manifest}")
 
 
 @task
 def pre_commit(ctx: Context) -> None:
     """Install pre-commit hooks on git."""
-    ctx.run("poetry run pre-commit install --hook-type pre-push")
-    ctx.run("poetry run pre-commit install --hook-type commit-msg")
+    ctx.run("pixi run pre-commit install --hook-type pre-push")
+    ctx.run("pixi run pre-commit install --hook-type commit-msg")
 
 
-@task(pre=[poetry, pre_commit], default=True)
+@task(pre=[pixi, pre_commit], default=True)
 def all(_: Context) -> None:
     """Run all install tasks."""
+    ...
