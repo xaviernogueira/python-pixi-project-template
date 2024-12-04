@@ -2,7 +2,7 @@
 
 A python project template to simplify project setup. Adapted originally by @irod973 from https://github.com/fmind/cookiecutter-mlops-package, and now by myself to switch from `poetry` to `pixi`.
 
-This template copy omits the MLFlow functionality. Use the linked mlops-package template if this is desired 
+This template copy omits the MLFlow functionality. Use the linked mlops-package template if this is desired
 
 The template provides a robust foundation for building, testing, packaging, and deploying Python packages and Docker Images. Adapt it to your project's needs; the source material is MLOps-focused but is suitable for a wide array of Python projects.
 
@@ -31,13 +31,19 @@ We use `pixi` due to it's ability to deterministically manage non-python depende
 * **Dockerized Deployment:** Dockerfile and docker-compose.yml for building and running the package within a containerized environment ([Docker](https://www.docker.com/)).
 * **Comprehensive Documentation:** [pdoc](https://pdoc.dev/) generates API documentation, and Markdown files provide clear usage instructions.
 * **GitHub Workflow Integration:** Continuous integration and deployment workflows are set up using [GitHub Actions](https://github.com/features/actions), automating testing, checks, and publishing.
+* **Performance Oriented Packaging:** [hatch](https://hatch.pypa.io/latest/install/) is used for packaging, which provides performance benefits over `setuptools` or `poetry`. See [this](https://hatch.pypa.io/latest/why/#build-backend) for details.
 
 ## Quick Start
 
 1. **Generate your project:**
 
+Start by having `pixi` installed on your machine.
 ```bash
-pip install cookiecutter
+# see: https://pixi.sh/latest/#installation
+curl -fsSL https://pixi.sh/install.sh | bash
+```
+
+```bash
 cookiecutter gh:xaviernogueira/python-pixi-project-template
 ```
 
@@ -61,7 +67,7 @@ git init
 # Then make first push e.g.
 # git commit -m "Initial commit"
 # git remote add origin https://github.com/irod973/{{myproject}}.git
-# git push -u origin main 
+# git push -u origin main
 ```
 
 3. **Explore the generated project:**
@@ -76,21 +82,21 @@ git init
 
 #TODO: update this for pixi!
 
-Use the provided Invoke tasks to manage your development workflow:
+Use the provided pixi "tasks" to manage your development workflow:
 
-- `invoke installs`: Install dependencies and pre-commit hooks.
-- `invoke formats`: Format your code.
-- `invoke checks`: Run code quality, type, security, and test checks.
-- `invoke docs`: Generate API documentation.
-- `invoke packages`: Build your Python package.
-- `invoke containers`: Build and run your Docker image.
+- `pixi run installs`: Install dependencies and pre-commit hooks.
+- `pixi run formats`: Format your code.
+- `pixi run checks`: Run code quality, type, security, and test checks.
+- `pixi run docs`: Generate API documentation.
+- `pixi run run packages`: Build your Python package.
+- `pixi run containers`: Build and run your Docker image.
 
 ## Example Usage
 
 ### Building and Running Your Docker Image
 
 ```bash
-invoke containers
+pixi run containers
 ```
 
 This builds a Docker image based on your [`Dockerfile`](https://github.com/fmind/cookiecutter-mlops-package/blob/main/%7B%7Bcookiecutter.repository%7D%7D/Dockerfile) and runs it.

@@ -9,14 +9,14 @@ from pytestshellutils.shell import Subprocess
 
 COMMANDS = [
     "git init",
-    "invoke cleans.reset",
-    "invoke installs",
-    "invoke formats",
-    "invoke checks",
-    "invoke docs",
-    "invoke projects",
-    "invoke packages",
-    "invoke containers",
+    # "pixi run cleans.reset",
+    "pixi run installs",
+    "pixi run formats",
+    "pixi run checks",
+    "pixi run docs",
+    "pixi run projects",
+    "pixi run packages",
+    "pixi run containers",
 ]
 
 # %% TESTS
@@ -25,17 +25,16 @@ COMMANDS = [
 def test_project_generation(cookies: Cookies) -> None:
     """Test the generation of the project."""
     # given
-    context  = {
+    context = {
         "user": "test",
         "name": "MLOps 123",
         "license": "apache-2",
         "version": "1.0.0",
         "description": "DONE",
         "python_version": "3.12",
-        "mlflow_version": "2.14.3",
     }
-    repository = context['name'].lower().replace(' ', '-')
-    package = repository.replace('-', '_')
+    repository = context["name"].lower().replace(" ", "-")
+    package = repository.replace("-", "_")
     # when
     result = cookies.bake(extra_context=context)
     # then
@@ -44,17 +43,19 @@ def test_project_generation(cookies: Cookies) -> None:
     assert result.exception is None
     assert result.project_path.is_dir()
     assert result.project_path.name == repository
-    assert result.context == {
-        "user": context['user'],
-        "name": context['name'],
+
+    expected_result = {
+        "user": context["user"],
+        "name": context["name"],
         "repository": repository,
         "package": package,
-        "license": context['license'],
-        "version": context['version'],
-        "description": context['description'],
-        "python_version": context['python_version'],
-        "mlflow_version": context['mlflow_version'],
+        "license": context["license"],
+        "version": context["version"],
+        "description": context["description"],
+        "python_version": context["python_version"],
     }
+    assert result.context == expected_result
+
     # - commands
     shell = Subprocess(cwd=result.project_path)
     for command in COMMANDS:
