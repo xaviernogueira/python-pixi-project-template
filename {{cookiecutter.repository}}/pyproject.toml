@@ -3,7 +3,6 @@
 name = "{{cookiecutter.repository}}"
 version = "{{cookiecutter.version}}"
 description = "{{cookiecutter.description}}"
-requires-python = "{{cookiecutter.python_version}}"
 repository = "https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}"
 documentation = "https://{{cookiecutter.user}}.github.io/{{cookiecutter.repository}}/"
 authors = ["{{cookiecutter.user}}"]
@@ -17,6 +16,7 @@ platforms = ["linux-64", "osx-arm64", "osx-64"]
 
 [tool.pixi.dependencies]
 python = "^{{cookiecutter.python_version}}"
+invoker = "^2.2.0"
 loguru = "^0.7.2"
 bandit = "^1.7.9"
 coverage = "^7.5.4"
@@ -30,6 +30,15 @@ pdoc = "^14.5.1"
 
 [tool.pixi.tasks]
 "{{cookiecutter.repository}}" = { cmd = "python -m {{cookiecutter.package}}.scripts" }
+checks = { cmd = "invoke checks" }
+cleans = { cmd = "invoke cleans" }
+commits = { cmd = "invoke commits" }
+containers = { cmd = "invoke containers" }
+docs = { cmd = "invoke docs" }
+formats = { cmd = "invoke formats" }
+installs = { cmd = "invoke installs" }
+packages = { cmd = "invoke packages" }
+
 
 # CONFIGURATIONS
 
