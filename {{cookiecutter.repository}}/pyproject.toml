@@ -74,6 +74,7 @@ target-version = "py312"
 src = ["src"]
 
 [tool.ruff.lint]
+ignore = ["D100", "D103"]
 extend-select = ["I"]
 
 [tool.ruff.format]
@@ -81,9 +82,6 @@ docstring-code-format = true
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
-
-[tool.ruff.lint.per-file-ignores]
-"tests/*.py" = ["D100", "D103"]
 
 [build-system]
 build-backend = "hatchling.build"
