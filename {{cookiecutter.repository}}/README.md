@@ -1,16 +1,14 @@
-# {{cookiecutter.name}}
+# Geo-Features-Ingestion
 
-[![check.yml](https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}/actions/workflows/check.yml/badge.svg)](https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}/actions/workflows/check.yml)
-[![publish.yml](https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}/actions/workflows/publish.yml/badge.svg)](https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}/actions/workflows/publish.yml)
+[![check.yaml](https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}/actions/workflows/check.yaml/badge.svg)](https://github.com/panoai/geo-features-ingestion/actions/workflows/check.yaml)
+[![test.yaml](https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}/actions/workflows/test.yaml/badge.svg)](https://github.com/panoai/geo-features-ingestion/actions/workflows/test.yaml)
+[![build.yaml](https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}/actions/workflows/build.yaml/badge.svg)](https://github.com/panoai/geo-features-ingestion/actions/workflows/build.yaml)
 [![Documentation](https://img.shields.io/badge/documentation-available-brightgreen.svg)](https://{{cookiecutter.user}}.github.io/{{cookiecutter.repository}}/)
-[![License](https://img.shields.io/github/license/{{cookiecutter.user}}/{{cookiecutter.repository}})](https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}/blob/main/LICENCE.txt)
-[![Release](https://img.shields.io/github/v/release/{{cookiecutter.user}}/{{cookiecutter.repository}})](https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}/releases)
+[![Release](https://img.shields.io/github/v/release/{{cookiecutter.user}}/{{cookiecutter.repository}})](https://github.com/panoai/geo-features-ingestion/releases)
 
 # Description
 
-{{cookiecutter.description}}.
-
-(This README is generated from a cookiecutter template. Delete this comment and modify your README!)
+Data team component of PanoAI geo-services. Ingest vector data.
 
 # Installation
 
@@ -20,36 +18,60 @@ Initialize your project with the provided pixi run command.
 pixi run installs
 ```
 
+Next activate the pixi environment (optionally specifying the dev environment).
+```bash
+pixi shell -e dev
+```
+
+Finally install the module and run the CLI, API, or tests.
+```bash
+pixi run build # or pixi run build_editable
+```
+
 # Usage
 
-(The source comes with an example python package and an example FastAPI app. Delete this comment and add details for your application.)
+## CLI
 
-Test the example package
 ```bash
-pixi run {{cookiecutter.repository}}
+python cli.py --help
 ```
 
-Test the example API with Docker:
+## Running development tasks
+
+Pixi tasks are used to trigger PyInvoke tasks. These tasks are enumerated below grouped by functionality.
+
+
+### Install and Build
+
 ```bash
-pixi add fastapi uvicorn
+pixi run installs # install dependencies
 
-# Invoke docker compose
-pixi run containers
-
-# Or run with docker compose
-docker compose up --build
-
-# Or run with docker
-# Note: specify platform if running on Apple M chip
-docker build --platform linux/amd64 -t angle-to-geo-image -f Dockerfile .
-docker run -it --platform linux/amd64 --name angle-to-geo-test-ctr -p 8000:8000 angle-to-geo-image
+pixi run build # build the package
+pixi run build_editable # build the package in editable mode
 ```
 
+### Tests
+
 ```bash
-pixi add fastapi uvicorn
-# Test the API using the local environment
-cd src
-pixi run uvicorn example_app.main:app --reload
+pixi run tests # run local tests
+pixi run local_coverage # run local coverage (no internet access)
+```
+
+### Trigger GitHub Actions
+
+```bash
+pixi run check_action
+pixi run test_action
+```
+
+### Other
+
+```bash
+pixi run clean # clean out unnecessary files
+pixi run format # run formatting
+pixi run checks # run pre-commit checks
+pixi run docs # generate documentation
+pixi run container # build the docker container and run it
 ```
 
 ## Development Features
@@ -64,17 +86,8 @@ pixi run uvicorn example_app.main:app --reload
 * **GitHub Workflow Integration:** Continuous integration and deployment workflows are set up using [GitHub Actions](https://github.com/features/actions), automating testing, checks, and publishing.
 * **Performance Oriented Packaging:** [hatch](https://hatch.pypa.io/latest/install/) is used for packaging, which provides performance benefits over `setuptools` or `poetry`. See [this](https://hatch.pypa.io/latest/why/#build-backend) for details.
 
-To run the provided Invoke tasks thru pixi:
-
-- `pixi run installs`: Install dependencies and pre-commit hooks.
-- `pixi run formats`: Format your code.
-- `pixi run checks`: Run code quality, type, security, and test checks.
-- `pixi run docs`: Generate API documentation.
-- `pixi run packages`: Build your Python package.
-- `pixi run containers`: Build and run your Docker image.
-
 ### Using Ruff with PyCharm
 
 Note: First version of [Ruff plugin](https://github.com/koxudaxi/ruff-pycharm-plugin) would have issues (v0.0.27) apparently due to my PyCharm version (2023.2).
 
-I upgraded to (2024.2) and Ruff 0.0.39 and now autosave works.
+I

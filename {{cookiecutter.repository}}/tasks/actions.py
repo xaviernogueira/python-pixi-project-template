@@ -13,7 +13,7 @@ from invoke.tasks import task
 
 # %% TASKS
 GH_REQUEST_PREFIX = 'gh api --method POST -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28"'
-WORKFLOW_PREFIX = "/repos/{{cookiecutter.user}}/{{cookiecutter.repo}}/actions/workflows/"
+WORKFLOW_PREFIX = "/repos/{{cookiecutter.user}}/{{cookiecutter.repository}}/actions/workflows/"
 
 
 def get_current_branch(ctx: Context) -> str:
