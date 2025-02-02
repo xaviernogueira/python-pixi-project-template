@@ -57,7 +57,7 @@ omit = ["__main__.py"]
 [tool.mypy]
 pretty = true
 strict = true
-python_version = "3.12"
+python_version = "3.11"
 check_untyped_defs = true
 ignore_missing_imports = true
 disable_error_code = ["import-untyped", "misc"]
@@ -70,7 +70,7 @@ pythonpath = ["src"]
 fix = true
 indent-width = 4
 line-length = 100
-target-version = "py312"
+target-version = "py311"
 src = ["src"]
 
 [tool.ruff.lint]
