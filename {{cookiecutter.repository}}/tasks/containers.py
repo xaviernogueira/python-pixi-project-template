@@ -5,34 +5,28 @@
 from invoke.context import Context
 from invoke.tasks import task
 
-from . import packages, cleans
+from . import build, cleans
 
 # %% CONFIGS
 
 IMAGE_TAG = "latest"
-REPOSITORY_NAME = cleans.get_pyproject_dict()["project"]["repository"]
+REPOSITORY_NAME = cleans.get_pyproject_dict()["project"]["urls"]["repository"]
 
 # %% TASKS
 
 
-@task
-def compose(ctx: Context) -> None:
-    """Start up docker compose."""
-    ctx.run("docker compose up --build")
-
-
-@task(pre=[packages.build])
-def build(ctx: Context, tag: str = IMAGE_TAG) -> None:
+@task(pre=[build.build_package])
+def build_container(ctx: Context, tag: str = IMAGE_TAG) -> None:
     """Build the container image."""
     ctx.run(f"docker build --tag={REPOSITORY_NAME}:{tag} .")
 
 
 @task
-def run(ctx: Context, tag: str = IMAGE_TAG) -> None:
+def run_container(ctx: Context, tag: str = IMAGE_TAG) -> None:
     """Run the container image."""
     ctx.run(f"docker run --rm {REPOSITORY_NAME}:{tag}")
 
 
-@task(pre=[build, run], default=True)
+@task(pre=[build_container, run_container], default=True)
 def all(_: Context) -> None:
     """Run all container tasks."""

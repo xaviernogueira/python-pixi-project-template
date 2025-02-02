@@ -5,6 +5,7 @@
 from invoke.context import Context
 from invoke.tasks import task
 
+from . import installs
 # %% TASKS
 
 
@@ -20,7 +21,7 @@ def sources(ctx: Context) -> None:
     ctx.run("pixi run ruff format src/ tasks/ tests/")
 
 
-@task(pre=[imports, sources], default=True)
+@task(pre=[installs.pixi_install_dev, imports, sources], default=True)
 def all(_: Context) -> None:
     """Run all format tasks."""
     ...

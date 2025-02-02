@@ -6,7 +6,7 @@ from invoke.context import Context
 from invoke.tasks import task
 from pathlib import Path
 
-from . import cleans
+from . import cleans, installs
 
 # %% CONFIGS
 
@@ -31,7 +31,7 @@ def api(ctx: Context, format: str = DOC_FORMAT, output_dir: str = OUTPUT_DIR) ->
     )
 
 
-@task(pre=[cleans.docs, api], default=True)
+@task(pre=[installs.pixi_install_docs, cleans.docs, api], default=True)
 def all(_: Context) -> None:
     """Run all docs tasks."""
     ...
