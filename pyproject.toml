@@ -5,7 +5,6 @@ requires-python = "== 3.12"
 authors = [{ name = "Xavier Nogueira", email = "xavier.rojas.nogueira@gmail.com"}]
 readme = "README.md"
 license = "MIT"
-package-mode = false
 
 # PyPI dependencies
 dependencies = [
@@ -20,13 +19,12 @@ channels = ["conda-forge"]
 platforms = ["linux-64", "osx-arm64", "osx-64"]
 
 [tool.pixi.dependencies]
-pre-commit = "3.7.1"
-pytest-cookies = "0.7.0"
+pytest-cookies = "0.7.0.*"
 
 [tool.pixi.tasks]
 install = { cmd = ["pixi", "install"] }
-hooks = { cmd = ["pixi", "run", "pre-commit", "install"], depends-on = ["install"] }
 test = { cmd = ["pixi", "run", "pytest", "tests/"], depends-on = ["install"] }
+push = { cmd = ["git", "push"] }
 
 [tool.pytest.ini_options]
 log_cli = true

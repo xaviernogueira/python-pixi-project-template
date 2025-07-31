@@ -13,8 +13,6 @@ repos:
       - id: check-merge-conflict
       - id: check-toml
       - id: check-yaml
-      - id: debug-statements
-        exclude: "^{{cookiecutter.repository}}/.*[^/]+$"
       - id: end-of-file-fixer
       - id: mixed-line-ending
       - id: trailing-whitespace
