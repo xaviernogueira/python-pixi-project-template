@@ -1,6 +1,6 @@
 {
     "user": "xaviernogueira",
-    "email": "",
+    "email": "xavier.rojas.nogueira@gmail.com",
     "name": "Python Pixi Project",
     "repository": "{{cookiecutter.name.lower().replace(' ', '-')}}",
     "package": "{{cookiecutter.repository.replace('-', '_')}}",

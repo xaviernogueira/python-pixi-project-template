@@ -1,14 +1,13 @@
 # Xaviers's Pixi Python Project Cookiecutter Template
 
-A python project template to simplify project setup. Adapted originally by @irod973 from https://github.com/fmind/cookiecutter-mlops-package, and now by myself to switch from `poetry` to `pixi`.
+A python project template to simplify project setup with `pixi`.
 
-This template copy omits the MLFlow functionality. Use the linked mlops-package template if this is desired
+The template provides a robust foundation for building, testing, packaging, and deploying Python packages and Docker Images. Adapt it to your project's needs.
 
-The template provides a robust foundation for building, testing, packaging, and deploying Python packages and Docker Images. Adapt it to your project's needs; the source material is MLOps-focused but is suitable for a wide array of Python projects.
 
 **Source resources**:
-- **[MLOps Coding Course (Learning)](https://mlops-coding-course.fmind.dev/)**: Learn how to create, develop, and maintain a state-of-the-art MLOps code base.
-- **[MLOps Python Package (Example)](https://github.com/fmind/mlops-python-package)**: Kickstart your MLOps initiative with a flexible, robust, and productive Python package.
+- **[Poetry Version](https://github.com/fmind/cookiecutter-mlops-package,)**: This version is adapted from a `poetry` based template by my coworker [@irod973](https://github.com/irod973), but migrates things/patterns from `poetry` to `pixi`.
+- **[MLOps Example Package](https://github.com/fmind/mlops-python-package)**: Kickstart your MLOps initiative with a flexible, robust, and productive Python package. Inspiration behind the `poetry` template above.
 
 ## Philosophy
 
@@ -86,6 +85,7 @@ Use the provided pixi "tasks" to manage your development workflow:
 - `pixi run installs`: Install dependencies and pre-commit hooks.
 - `pixi run formats`: Format your code.
 - `pixi run checks`: Run code quality, type, security, and test checks.
+- `pixi run tests`: Runs `pytest` suite.
 - `pixi run docs`: Generate API documentation.
 - `pixi run run packages`: Build your Python package.
 - `pixi run containers`: Build and run your Docker image.
