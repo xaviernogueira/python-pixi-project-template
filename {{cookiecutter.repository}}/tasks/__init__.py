@@ -7,7 +7,6 @@
 from invoke import Collection
 
 from . import (
-    actions,
     build,
     checks,
     cleans,
@@ -23,7 +22,6 @@ ns = Collection()
 
 # %% COLLECTIONS
 
-ns.add_collection(actions)
 ns.add_collection(build)
 ns.add_collection(checks)
 ns.add_collection(cleans)

@@ -1,14 +1,14 @@
-# Geo-Features-Ingestion
+# {{cookiecutter.name}}
 
-[![check.yaml](https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}/actions/workflows/check.yaml/badge.svg)](https://github.com/panoai/geo-features-ingestion/actions/workflows/check.yaml)
-[![test.yaml](https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}/actions/workflows/test.yaml/badge.svg)](https://github.com/panoai/geo-features-ingestion/actions/workflows/test.yaml)
-[![build.yaml](https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}/actions/workflows/build.yaml/badge.svg)](https://github.com/panoai/geo-features-ingestion/actions/workflows/build.yaml)
+[![check.yaml](https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}/actions/workflows/check.yaml/badge.svg)](https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}/actions/workflows/check.yaml)
+[![test.yaml](https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}/actions/workflows/test.yaml/badge.svg)](https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}/actions/workflows/test.yaml)
+[![build.yaml](https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}/actions/workflows/build.yaml/badge.svg)](https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}/actions/workflows/build.yaml)
 [![Documentation](https://img.shields.io/badge/documentation-available-brightgreen.svg)](https://{{cookiecutter.user}}.github.io/{{cookiecutter.repository}}/)
-[![Release](https://img.shields.io/github/v/release/{{cookiecutter.user}}/{{cookiecutter.repository}})](https://github.com/panoai/geo-features-ingestion/releases)
+[![Release](https://img.shields.io/github/v/release/{{cookiecutter.user}}/{{cookiecutter.repository}})](https://github.com/{{cookiecutter.user}}/{{cookiecutter.repository}}/releases)
 
 # Description
 
-Data team component of PanoAI geo-services. Ingest vector data.
+{{cookiecutter.description}}
 
 # Installation
 
@@ -54,14 +54,7 @@ pixi run build_editable # build the package in editable mode
 
 ```bash
 pixi run tests # run local tests
-pixi run local_coverage # run local coverage (no internet access)
-```
-
-### Trigger GitHub Actions
-
-```bash
-pixi run check_action
-pixi run test_action
+pixi run coverage # run local coverage (no internet access)
 ```
 
 ### Other

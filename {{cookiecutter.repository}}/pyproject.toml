@@ -73,9 +73,7 @@ formats = { cmd = "invoke formats" }
 build = { cmd = "invoke build" }
 build_editable = { cmd = "invoke build --editable"  }
 tests = { cmd = "invoke testing" }
-local_coverage = { cmd = "invoke testing --calculate-coverage" }
-check_action = { cmd = "invoke actions --check" }
-test_action = { cmd = "invoke actions --test" }
+coverage = { cmd = "invoke testing --calculate-coverage" }
 
 
 # CONFIGURATIONS

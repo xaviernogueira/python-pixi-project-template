@@ -25,6 +25,11 @@ RUN echo 'exec "$@"' >> /shell-hook.sh
 
 FROM ubuntu:24.04 AS runtime
 
+# install CA certificates for CloudRun obstore use
+RUN apt-get update && \
+    apt-get install -y ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
+
 # note that the "prefix" (path) needs to stay the same as in the build container
 RUN mkdir /app
 COPY --from=build /app /app

@@ -12,13 +12,13 @@ from . import installs
 @task
 def imports(ctx: Context) -> None:
     """Format python imports with ruff."""
-    ctx.run("pixi run ruff check --select I --fix")
+    ctx.run("pixi run -e dev ruff check --select I --fix")
 
 
 @task
 def sources(ctx: Context) -> None:
     """Format python sources with ruff."""
-    ctx.run("pixi run ruff format src/ tasks/ tests/")
+    ctx.run("pixi run -e dev ruff format src/ tasks/ tests/")
 
 
 @task(pre=[installs.pixi_install_dev, imports, sources], default=True)
